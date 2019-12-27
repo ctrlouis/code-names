@@ -12,7 +12,6 @@ class Party {
             el: '#game',
             data: {
                 errors: [],
-                test: "wtf",
                 cards: words
             },
             methods: {
