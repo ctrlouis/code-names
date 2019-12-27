@@ -2,10 +2,14 @@ extends fabric/base.html.pug
 
 block main
     <div id="game">
+
         <ul class="board">
-            <li v-for="card in cards" class="card">
-                <p> {{ card }} </p>
-                <p class="flip-text"> {{ card }} </p>
+            <li v-for="card in cards" @click="select(card)" :class="{'selected-card' :card.selected}" class="card">
+                <p> {{ card.word }} </p>
+                <p class="flip-text"> {{ card.word }} </p>
             </li>
         </ul>
+
+        <button @click="valid">Valider</button>
+
     </div>

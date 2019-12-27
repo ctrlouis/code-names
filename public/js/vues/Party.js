@@ -10,11 +10,16 @@ class Party {
     static create() {
         new Vue({
             el: '#game',
+
             data: {
                 errors: [],
-                cards: words
+                cards: wordList()
             },
+
             methods: {
+                select: function(card) {
+                    card.selected = !card.selected;
+                },
                 valid: function(event) {
                     event.preventDefault();
                     console.log("Validated");
@@ -29,14 +34,29 @@ class Party {
 
                     return true;
                 }
+            },
+
+            computed: {
+
             }
         });
     }
 
 }
 
-const words = [
+const initalWords = [
     "Champoin", "Téléphone", "Chat", "Coussin", "Céréales", "Piments", "Lampe", "Croix", "Porte", "Marteau", "Table", "Hache", "Clavier", "Bois", "Epée", "Ours", "Papier", "Toilette", "Billet", "Aimant", "Chaussette", "Lit", "Ecran", "Fourchette", "Courronne", "Courgette", "Costume", "Panier", "Fiole", "Balancoire", "Tableau", "Argent", "Marché", "Papillon", "Attraction", "Laser", "Lunette", "Nucléaire"
 ];
+
+const wordList = () => {
+    let list = [];
+    initalWords.forEach( (word) => {
+        list.push({
+            word: word,
+            selected: false
+        });
+    });
+    return list;
+};
 
 export default Party;
