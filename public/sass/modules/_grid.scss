@@ -1,0 +1,51 @@
+@import 'confs/screenBreakpoints.scss';
+
+$defaultColumnNumber: 12;
+$defaultGutter: 2%;
+
+@mixin grid($columnNumber :$defaultColumnNumber, $gutter :$defaultGutter) {
+
+    display: grid;
+    grid-template-columns: repeat($columnNumber, 1fr);
+    grid-auto-flow: dense;
+    column-gap: $gutter;
+
+    @for $i from 1 through $columnNumber {
+        .col-#{$i} {
+            grid-column: span #{$i};
+        }
+    }
+
+    @media screen and (min-width: $smallScreen) {
+        @for $i from 1 through $columnNumber {
+            .col-s-#{$i} {
+                grid-column: span #{$i};
+            }
+        }
+    }
+
+    @media screen and (min-width: $mediumScreen) {
+        @for $i from 1 through $columnNumber {
+            .col-m-#{$i} {
+                grid-column: span #{$i};
+            }
+        }
+    }
+
+    @media screen and (min-width: $largeScreen) {
+        @for $i from 1 through $columnNumber {
+            .col-l-#{$i} {
+                grid-column: span #{$i};
+            }
+        }
+    }
+
+    @media screen and (min-width: $xlargeScreen) {
+        @for $i from 1 through $columnNumber {
+            .col-xl-#{$i} {
+                grid-column: span #{$i};
+            }
+        }
+    }
+
+}

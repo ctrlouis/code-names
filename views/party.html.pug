@@ -1,0 +1,11 @@
+extends fabric/base.html.pug
+
+block main
+    <div id="game">
+        <ul class="board">
+            <li v-for="card in cards" class="card">
+                <p> {{ card }} </p>
+                <p class="flip-text"> {{ card }} </p>
+            </li>
+        </ul>
+    </div>
