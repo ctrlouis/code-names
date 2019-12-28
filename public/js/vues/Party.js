@@ -1,6 +1,9 @@
 "use strict";
 
 
+import Cards from '../controllers/Cards.js';
+
+
 class Party {
 
     static init() {
@@ -13,7 +16,7 @@ class Party {
 
             data: {
                 errors: [],
-                cards: wordList()
+                cards: Cards.distribute()
             },
 
             methods: {
@@ -43,20 +46,5 @@ class Party {
     }
 
 }
-
-const initalWords = [
-    "Champoin", "Téléphone", "Chat", "Coussin", "Céréales", "Piments", "Lampe", "Croix", "Porte", "Marteau", "Table", "Hache", "Clavier", "Bois", "Epée", "Ours", "Papier", "Toilette", "Billet", "Aimant", "Chaussette", "Lit", "Ecran", "Fourchette", "Courronne", "Courgette", "Costume", "Panier", "Fiole", "Balancoire", "Tableau", "Argent", "Marché", "Papillon", "Attraction", "Laser", "Lunette", "Nucléaire"
-];
-
-const wordList = () => {
-    let list = [];
-    initalWords.forEach( (word) => {
-        list.push({
-            word: word,
-            selected: false
-        });
-    });
-    return list;
-};
 
 export default Party;
