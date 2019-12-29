@@ -113,6 +113,22 @@ img {
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
+.blackCard {
+  background-color: black;
+}
+
+.blueCard {
+  background-color: #12335b;
+}
+
+.redCard {
+  background-color: #aa1a2b;
+}
+
+.neutralCard {
+  background-color: #98958f;
+}
+
 .selected-card {
   background-color: #756c54;
 }

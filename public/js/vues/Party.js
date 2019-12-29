@@ -36,6 +36,33 @@ class Party {
                     }
 
                     return true;
+                },
+                cardClass: function(card) {
+                    let blackCard = false;
+                    let blueCard = false;
+                    let redCard = false;
+
+                    if (card.color) {
+                        switch (card.color) {
+                            case 'black':
+                                blackCard = true;
+                                break;
+                            case 'blue':
+                                blueCard = true;
+                                break;
+                            case 'red':
+                                redCard = true;
+                                break;
+                            default:
+                        }
+                    }
+
+                    return {
+                        'selected-card' : card.selected,
+                        'blackCard' : blackCard,
+                        'blueCard' : blueCard,
+                        'redCard' : redCard
+                    };
                 }
             },
 

@@ -9,7 +9,8 @@ class Card {
     // return array randomly fill with value of "initalWords" array
     static distribute() {
         let cards =  Card.getRandomCards(initalWords, 25);
-        cards = Card.makeUsable(cards);
+        cards = Card.selectify(cards);
+        cards = Card.teamify(cards);
         return cards;
     }
 
@@ -25,13 +26,45 @@ class Card {
         return randomCards;
     }
 
-    static makeUsable(words) {
+    // add require attributs to cards
+    static selectify(words) {
         return words.map( (word) => {
             return {
                 word: word,
                 selected: false
-            }
+            };
         });
+    }
+
+    // add color attributs to cards
+    static teamify(cards) {
+        let excludedCards = [];
+
+        // get blackCard location
+        const blackCard     = [MyMath.getRandomInt(cards.length)];
+        Array.prototype.push.apply(excludedCards, blackCard);
+
+        // get redCards location
+        const redCards       = MyMath.getRandomIntArray(8, cards.length, true, excludedCards);
+        Array.prototype.push.apply(excludedCards, redCards);
+
+        // get blueCards location
+        const blueCards      = MyMath.getRandomIntArray(9, cards.length, true, excludedCards);
+        Array.prototype.push.apply(excludedCards, blueCards);
+
+        // apply color attributs in function of location;
+        cards = Card.setColor(blackCard, cards, "black");
+        cards = Card.setColor(blueCards, cards, "blue");
+        cards = Card.setColor(redCards, cards, "red");
+
+        return cards;
+    }
+
+    static setColor(indexs, cards, color) {
+        indexs.forEach( (index) => {
+            cards[index].color = color;
+        });
+        return cards;
     }
 
 }
