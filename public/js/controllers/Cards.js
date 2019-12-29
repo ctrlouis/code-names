@@ -32,18 +32,6 @@ class Card {
         });
     }
 
-    // create array usable by Party vue
-    static wordList() {
-        let list = [];
-        initalWords.forEach( (word) => {
-            list.push({
-                word: word,
-                selected: false
-            });
-        });
-        return list;
-    }
-
 }
 
 const initalWords = [
