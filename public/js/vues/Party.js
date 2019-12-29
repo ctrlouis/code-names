@@ -21,11 +21,17 @@ class Party {
 
             methods: {
                 select: function(card) {
-                    card.selected = !card.selected;
+                    if (!card.discover) {
+                        card.selected = !card.selected;
+                    }
                 },
                 valid: function(event) {
-                    event.preventDefault();
-                    console.log("Validated");
+                    this.cards.forEach( (card) => {
+                        if (card.selected) {
+                            card.selected = false;
+                            card.discover = true;
+                        }
+                    })
                 },
                 checkform: function(e) {
                     this.errors = [];
@@ -41,8 +47,9 @@ class Party {
                     let blackCard = false;
                     let blueCard = false;
                     let redCard = false;
+                    let neutralCard = false;
 
-                    if (card.color) {
+                    if (card.discover) {
                         switch (card.color) {
                             case 'black':
                                 blackCard = true;
@@ -54,6 +61,8 @@ class Party {
                                 redCard = true;
                                 break;
                             default:
+                                neutralCard = true;
+                                break;
                         }
                     }
 
@@ -61,7 +70,8 @@ class Party {
                         'selected-card' : card.selected,
                         'blackCard' : blackCard,
                         'blueCard' : blueCard,
-                        'redCard' : redCard
+                        'redCard' : redCard,
+                        'neutralCard': neutralCard
                     };
                 }
             },

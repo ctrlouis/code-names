@@ -31,7 +31,8 @@ class Card {
         return words.map( (word) => {
             return {
                 word: word,
-                selected: false
+                selected: false,
+                discover: false
             };
         });
     }
