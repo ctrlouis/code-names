@@ -3,16 +3,19 @@
 
 class MyMath {
 
-    static getRandomIntArray(size, max, unique =false) {
+    static getRandomIntArray(size, max, unique =false, excluded =[]) {
         let rng = [];
         let number;
 
         while (rng.length < size) {
             number = MyMath.getRandomInt(max);
-            if (unique) {
-                if ( !rng.includes(number) ) rng.push(number);
-            } else {
-                rng.push(number);
+            // continue if number is not excluded
+            if (!excluded.includes(number)) {
+                if (unique) {
+                    if ( !rng.includes(number) ) rng.push(number); // add number if not already exist when "unique" is true
+                } else {
+                    rng.push(number); // add number
+                }
             }
         }
 
